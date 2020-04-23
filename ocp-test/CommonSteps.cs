@@ -1,5 +1,5 @@
-﻿using System.Threading;
-using TechTalk.SpecFlow;
+﻿using TechTalk.SpecFlow;
+using OpenQA.Selenium;
 
 namespace ocp_test
 {
@@ -46,5 +46,16 @@ namespace ocp_test
                     break;
             }
         }
+
+        [Given(@"I scroll (.*) for (.*) pixel")]
+        [Given(@"I scroll (.*) for (.*) pixel")]
+        [Given(@"I scroll (.*) for (.*) pixel")]
+        public void GivenIScrollDownForPixel(string direction, int pixels)
+        {
+            IJavaScriptExecutor js = (IJavaScriptExecutor)_context.Driver;
+            js.ExecuteScript($"window.scrollBy(0,{pixels})");
+            Utility.DemoPause();
+        }
+
     }
 }
