@@ -54,5 +54,7 @@ Scenario: Fill all general details successfully
 		And I enter my activity to bussiness activity field
 		And I click the consent button
 		And I enter C:\Users\omar.ibrahim\Pictures\Saved Pictures\skaterbui.png to upload consents field
-	When I click the validate button
-	Then Upload consent visibility should be true
+		And I scroll down for 1000 pixel
+		And I enter C:\Users\omar.ibrahim\Pictures\Saved Pictures\skaterbui.png to upload letter field
+	When I click the next button
+	Then I click the next button

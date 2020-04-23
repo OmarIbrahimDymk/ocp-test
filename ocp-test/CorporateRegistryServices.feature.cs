@@ -384,10 +384,17 @@ this.ScenarioInitialize(scenarioInfo);
                         "sents field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 57
- testRunner.When("I click the validate button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+  testRunner.And("I scroll down for 1000 pixel", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 58
- testRunner.Then("Upload consent visibility should be true", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+  testRunner.And("I enter C:\\Users\\omar.ibrahim\\Pictures\\Saved Pictures\\skaterbui.png to upload let" +
+                        "ter field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 59
+ testRunner.When("I click the next button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 60
+ testRunner.Then("I click the next button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
