@@ -23,6 +23,7 @@ namespace ocp_test
         private IWebElement _radioGroup;
         private IWebElement _uploadConsents;
         private IWebElement _consentInput;
+        private IWebElement _letterInput;
         private ReadOnlyCollection<IWebElement> _entitySelectionItems;
 
         WebDriverWait _wait;
@@ -56,6 +57,7 @@ namespace ocp_test
             _radioGroup = _wait.Until((d) => d.FindElement(By.CssSelector("[role=radiogroup]")));
             _uploadConsents = _wait.Until((d) => d.FindElement(By.ClassName("v-file-input__text")));
             _consentInput = _wait.Until((d) => d.FindElement(By.Id("consents")));
+            _letterInput = _wait.Until((d) => d.FindElement(By.Id("letter")));
         }
 
         public void ClickCheckBox() => _checkboxWrapper.Click();
@@ -84,6 +86,7 @@ namespace ocp_test
 
         public void setName(string name) => _name.SendKeys(name);
         public void setConsents(string fileName) => _consentInput.SendKeys(fileName);
+        public void setLetter(string fileName) => _letterInput.SendKeys(fileName);
         public void setActivity(string activity) => _businessActivitiy.SendKeys(activity);
 
         public void selectEntity2()
