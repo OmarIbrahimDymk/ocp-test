@@ -46,6 +46,10 @@ namespace ocp_test
                     _context.CorporateRegistryServicesPage.setConsents(text);
                     Utility.DemoPause();
                     break;
+                case "upload letter":
+                    _context.CorporateRegistryServicesPage.setLetter(text);
+                    Utility.DemoPause();
+                    break;
                 default:
                     break;
             }
