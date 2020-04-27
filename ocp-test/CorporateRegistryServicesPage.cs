@@ -1,4 +1,4 @@
-﻿using OpenQA.Selenium;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.ObjectModel;
@@ -27,6 +27,9 @@ namespace ocp_test
         private ReadOnlyCollection<IWebElement> _entitySelectionItems;
 
         WebDriverWait _wait;
+        private IWebElement _address1;
+        private IWebElement _addAddressBtn;
+        private ReadOnlyCollection<IWebElement> _addresses;
 
         public CorporateRegistryServicesPage(IWebDriver driver)
         {
@@ -58,6 +61,13 @@ namespace ocp_test
             _uploadConsents = _wait.Until((d) => d.FindElement(By.ClassName("v-file-input__text")));
             _consentInput = _wait.Until((d) => d.FindElement(By.Id("consents")));
             _letterInput = _wait.Until((d) => d.FindElement(By.Id("letter")));
+        }
+
+        public void InitializeAddressElements()
+        {
+
+            _address1 = _wait.Until((d) => d.FindElement(By.Id("address1")));
+            _addAddressBtn = _wait.Until((d) => d.FindElement(By.Id("addAddress")));
         }
 
         public void ClickCheckBox() => _checkboxWrapper.Click();
@@ -104,6 +114,13 @@ namespace ocp_test
             _entitySelectionItems = _driver.FindElements(By.ClassName("v-list-item__title"));
             Utility.DemoPause();
             _entitySelectionItems[0].Click();
+        }
+
+        public int GetAddressesCount()
+        {
+            _addresses = _wait.Until((d) => d.FindElements(By.ClassName("address")));
+
+            return _addresses.Count;
         }
     }
 }
