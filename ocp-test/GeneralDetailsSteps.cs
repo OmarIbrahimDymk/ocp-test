@@ -27,13 +27,11 @@ namespace ocp_test
             {
                 case "General Details":
                     _context.CorporateRegistryServicesPage.ClickNextButton();
-                    _context.CorporateRegistryServicesPage.InitializeGeneralDetailsElements();
                     break;
                 case "Address":
                     _context.CorporateRegistryServicesPage.ClickNextButton();
                     Utility.Pause(300);
                     _context.CorporateRegistryServicesPage.ClickNextButton();
-                    _context.CorporateRegistryServicesPage.InitializeAddressElements();
                     break;
                 default:
                     break;

@@ -51,7 +51,6 @@ namespace ocp_test
         public void WhenIFillAllTheRequiredFields()
         {
             Utility.DemoPause();
-            _context.CorporateRegistryServicesPage.InitializeGeneralDetailsElements();
             _context.CorporateRegistryServicesPage.SetName("My Company");
             Utility.DemoPause();
             _context.CorporateRegistryServicesPage.ClickValidateButton();
