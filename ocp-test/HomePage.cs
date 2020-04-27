@@ -6,13 +6,11 @@ namespace ocp_test
         private readonly IWebDriver _driver;
         private const string PageUri = "http://localhost:8080/";
 
-        private IWebElement _registerButton;
+        private string _registerButton = "register";
 
         public HomePage(IWebDriver driver)
         {
             _driver = driver;
-
-            _registerButton = _driver.FindElement(By.Id("register"));
         }
 
         public static HomePage NavigateTo(IWebDriver driver)
@@ -22,6 +20,6 @@ namespace ocp_test
             return new HomePage(driver);
         }
 
-        public void ClickRegisterButton() => _registerButton.Click();
+        public void ClickRegisterButton() => _driver.FindElement(By.Id(_registerButton)).Click();
     }
 }
