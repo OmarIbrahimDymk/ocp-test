@@ -1,4 +1,4 @@
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.ObjectModel;
@@ -35,7 +35,7 @@ namespace ocp_test
         {
             _driver = driver;
 
-            _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(1));
+            _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(5));
 
             _checkbox = _wait.Until((d) => d.FindElement(By.Id("checkbox")));
             _saveBtn = _wait.Until((d) => d.FindElement(By.Id("save")));
@@ -49,7 +49,7 @@ namespace ocp_test
             return new CorporateRegistryServicesPage(driver);
         }
 
-        public void initializeGeneralDetailsElements()
+        public void InitializeGeneralDetailsElements()
         {
 
             _name = _wait.Until((d) => d.FindElement(By.Id("name")));
@@ -84,22 +84,21 @@ namespace ocp_test
         public void ClickValidateButton() => _validateBtn.Click();
         public void ClickConsent() => _uploadConsents.Click();
 
-        public void ClickConsentButton()
-        {
-            _radioYes.Click();
-        }
+        public void ClickConsentButton() => _radioYes.Click();
+        public void ClickAddAddressButton() => _addAddressBtn.Click();
 
-        public bool isCheckboxSelected() => _checkbox.Selected;
-        public bool isNameVisible() => _name.Displayed;
-        public bool isConsentRadioVisible() => _radioGroup.Displayed;
-        public bool isUploadConsentsVisible() => _uploadConsents.Displayed;
+        public bool IsCheckboxSelected() => _checkbox.Selected;
+        public bool IsNameVisible() => _name.Displayed;
+        public bool IsConsentRadioVisible() => _radioGroup.Displayed;
+        public bool IsUploadConsentsVisible() => _uploadConsents.Displayed;
 
-        public void setName(string name) => _name.SendKeys(name);
-        public void setConsents(string fileName) => _consentInput.SendKeys(fileName);
-        public void setLetter(string fileName) => _letterInput.SendKeys(fileName);
-        public void setActivity(string activity) => _businessActivitiy.SendKeys(activity);
+        public void SetName(string name) => _name.SendKeys(name);
+        public void SetConsents(string fileName) => _consentInput.SendKeys(fileName);
+        public void SetLetter(string fileName) => _letterInput.SendKeys(fileName);
+        public void SetActivity(string activity) => _businessActivitiy.SendKeys(activity);
+        public void SetAddress1(string activity) => _address1.SendKeys(activity);
 
-        public void selectEntity2()
+        public void SelectEntity2()
         {
             var entity = _driver.FindElement(By.Id("entity"));
             var selectElement = new SelectElement(entity);
@@ -107,7 +106,7 @@ namespace ocp_test
             selectElement.SelectByIndex(0);
         }
 
-        public void selectEntity()
+        public void SelectEntity()
         {
             _entitySelection.Click();
 
