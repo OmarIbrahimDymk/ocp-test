@@ -1,5 +1,5 @@
-﻿using TechTalk.SpecFlow;
 using OpenQA.Selenium;
+using TechTalk.SpecFlow;
 
 namespace ocp_test
 {
@@ -37,6 +37,10 @@ namespace ocp_test
                     break;
                 case "consent":
                     _context.CorporateRegistryServicesPage.ClickConsentButton();
+                    Utility.DemoPause();
+                    break;
+                case "add address":
+                    _context.CorporateRegistryServicesPage.ClickAddAddressButton();
                     Utility.DemoPause();
                     break;
                 case "register":
