@@ -58,3 +58,10 @@ Scenario: Fill all general details successfully
 		And I enter C:\Users\omar.ibrahim\Pictures\Saved Pictures\skaterbui.png to upload letter field
 	When I click the next button
 	Then I click the next button
+
+@Address
+Scenario: Add primary address successfully
+	Given I on the Address Tab
+		And I enter home to address1 field
+	When I click the add address button
+	Then I should see new address is added
