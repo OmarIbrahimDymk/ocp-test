@@ -32,7 +32,9 @@ namespace ocp_test
         [Fact]
         public void DeclareReadImportantMessage()
         {
-            using (IWebDriver driver = new ChromeDriver())
+            ChromeOptions options = new ChromeOptions();
+            options.AddArguments("headless");
+            using (IWebDriver driver = new ChromeDriver(options))
             {
                 driver.Manage().Window.Maximize();
 
@@ -55,7 +57,9 @@ namespace ocp_test
         [Fact]
         public void CancelRegistration()
         {
-            using (IWebDriver driver = new ChromeDriver())
+            ChromeOptions options = new ChromeOptions();
+            options.AddArguments("headless");
+            using (IWebDriver driver = new ChromeDriver(options))
             {
                 driver.Manage().Window.Maximize();
 
