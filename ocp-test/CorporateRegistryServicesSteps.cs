@@ -1,4 +1,4 @@
-﻿using TechTalk.SpecFlow;
+using TechTalk.SpecFlow;
 using Xunit;
 
 namespace ocp_test
@@ -43,7 +43,7 @@ namespace ocp_test
         public void ThenIShouldSeeTheCheckboxIsChecked()
         {
             Utility.Pause();
-            Assert.True(_context.CorporateRegistryServicesPage.isCheckboxSelected());
+            Assert.True(_context.CorporateRegistryServicesPage.IsCheckboxSelected());
             Utility.DemoPause();
         }
 
@@ -51,12 +51,12 @@ namespace ocp_test
         public void WhenIFillAllTheRequiredFields()
         {
             Utility.DemoPause();
-            _context.CorporateRegistryServicesPage.initializeGeneralDetailsElements();
-            _context.CorporateRegistryServicesPage.setName("My Company");
+            _context.CorporateRegistryServicesPage.InitializeGeneralDetailsElements();
+            _context.CorporateRegistryServicesPage.SetName("My Company");
             Utility.DemoPause();
             _context.CorporateRegistryServicesPage.ClickValidateButton();
             Utility.DemoPause();
-            _context.CorporateRegistryServicesPage.selectEntity();
+            _context.CorporateRegistryServicesPage.SelectEntity();
             Utility.DemoPause();
         }
     }

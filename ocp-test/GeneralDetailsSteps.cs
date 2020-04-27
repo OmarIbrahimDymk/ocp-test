@@ -1,4 +1,4 @@
-﻿using TechTalk.SpecFlow;
+using TechTalk.SpecFlow;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -35,19 +35,21 @@ namespace ocp_test
             switch (fieldName)
             {
                 case "proposed name":
-                    _context.CorporateRegistryServicesPage.setName(text);
+                    _context.CorporateRegistryServicesPage.SetName(text);
                     Utility.DemoPause();
                     break;
                 case "bussiness activity":
-                    _context.CorporateRegistryServicesPage.setActivity(text);
+                    _context.CorporateRegistryServicesPage.SetActivity(text);
                     Utility.DemoPause();
                     break;
                 case "upload consents":
-                    _context.CorporateRegistryServicesPage.setConsents(text);
+                    _context.CorporateRegistryServicesPage.SetConsents(text);
                     Utility.DemoPause();
                     break;
                 case "upload letter":
-                    _context.CorporateRegistryServicesPage.setLetter(text);
+                    _context.CorporateRegistryServicesPage.SetLetter(text);
+                    Utility.DemoPause();
+                    break;
                     Utility.DemoPause();
                     break;
                 default:
@@ -61,7 +63,7 @@ namespace ocp_test
             switch (selection)
             {
                 case "entity type":
-                    _context.CorporateRegistryServicesPage.selectEntity();
+                    _context.CorporateRegistryServicesPage.SelectEntity();
                     Utility.DemoPause();
                     break;
                 default:
@@ -73,14 +75,16 @@ namespace ocp_test
         [Then(@"Radio button visibility should be (.*)")]
         public void ThenRadioButtonVisibilityShouldBe(bool visibility)
         {
-            Assert.Equal(visibility, _context.CorporateRegistryServicesPage.isConsentRadioVisible());
+            Assert.Equal(visibility, _context.CorporateRegistryServicesPage.IsConsentRadioVisible());
         }
 
         [Then(@"Upload consent visibility should be (.*)")]
         public void ThenUploadConsentShouldBeHidden(bool visibility)
         {
             Utility.DemoPause();
-            Assert.Equal(visibility, _context.CorporateRegistryServicesPage.isUploadConsentsVisible());
+            Assert.Equal(visibility, _context.CorporateRegistryServicesPage.IsUploadConsentsVisible());
         }
+        }
+
     }
 }
