@@ -11,15 +11,17 @@ namespace ocp_test
         private const string PageUri = "http://localhost:8080/register";
         WebDriverWait _wait;
 
-        // CRS Page
+        #region CRS Page
         private string _saveBtn = "save";
         private string _nextBtn = "next";
         private string _checkboxWrapper = "v-input--selection-controls";
+        #endregion
 
-        // Important Info Tab
+        #region Important Info Tab
         private string _checkbox = "checkbox";
+        #endregion
 
-        // General Details Tab
+        #region General Details Tab
         private string _name = "name";
         private string _validateBtn = "validate";
         private string _businessActivitiy = "activity";
@@ -29,10 +31,12 @@ namespace ocp_test
         private string _uploadConsents = "v-file-input__text";
         private string _consentInput = "consents";
         private string _letterInput = "letter";
+        #endregion
 
-        // Address Tab
+        #region Address Tab
         private string _address1 = "address1";
         private string _addAddressBtn = "addAddress";
+        #endregion
 
         public CorporateRegistryServicesPage(IWebDriver driver)
         {
@@ -47,34 +51,39 @@ namespace ocp_test
             return new CorporateRegistryServicesPage(driver);
         }
 
-        public void ClickCheckBox() => _wait.Until((d) => d.FindElement(By.ClassName(_checkboxWrapper))).Click();
+        public int GetAddressesCount() => _wait.Until((d) => d.FindElements(By.ClassName("address"))).Count;
 
+        #region Click Function
+        public void ClickCheckBox() => _wait.Until((d) => d.FindElement(By.ClassName(_checkboxWrapper))).Click();
         public HomePage ClickSaveButton()
         {
             _wait.Until((d) => d.FindElement(By.Id(_saveBtn))).Click();
 
             return new HomePage(_driver);
         }
-
         public void ClickNextButton() => _wait.Until((d) => d.FindElement(By.Id(_nextBtn))).Click();
-
         public void ClickValidateButton() => _wait.Until((d) => d.FindElement(By.Id(_validateBtn))).Click();
         public void ClickConsent() => _wait.Until((d) => d.FindElement(By.ClassName(_uploadConsents))).Click();
-
         public void ClickConsentButton() => _wait.Until((d) => d.FindElement(By.CssSelector(_radioYes))).Click();
         public void ClickAddAddressButton() => _wait.Until((d) => d.FindElement(By.Id(_addAddressBtn))).Click();
+        #endregion
 
+        #region Visibility function
         public bool IsCheckboxSelected() => _wait.Until((d) => d.FindElement(By.Id(_checkbox))).Selected;
         public bool IsNameVisible() => _wait.Until((d) => d.FindElement(By.Id(_name))).Displayed;
         public bool IsConsentRadioVisible() => _wait.Until((d) => d.FindElement(By.CssSelector(_radioGroup))).Displayed;
         public bool IsUploadConsentsVisible() => _wait.Until((d) => d.FindElement(By.ClassName(_uploadConsents))).Displayed;
+        #endregion
 
+        #region Set function
         public void SetName(string name) => _wait.Until((d) => d.FindElement(By.Id(_name))).SendKeys(name);
         public void SetConsents(string fileName) => _wait.Until((d) => d.FindElement(By.Id(_consentInput))).SendKeys(fileName);
         public void SetLetter(string fileName) => _wait.Until((d) => d.FindElement(By.Id(_letterInput))).SendKeys(fileName);
         public void SetActivity(string activity) => _wait.Until((d) => d.FindElement(By.Id(_businessActivitiy))).SendKeys(activity);
         public void SetAddress1(string activity) => _wait.Until((d) => d.FindElement(By.Id(_address1))).SendKeys(activity);
+        #endregion
 
+        #region Select Function
         public void SelectEntity2()
         {
             var entity = _driver.FindElement(By.Id("entity"));
@@ -82,7 +91,6 @@ namespace ocp_test
 
             selectElement.SelectByIndex(0);
         }
-
         public void SelectEntity()
         {
             _wait.Until((d) => d.FindElement(By.ClassName(_entitySelection))).Click();
@@ -91,7 +99,6 @@ namespace ocp_test
             Utility.DemoPause();
             _entitySelectionItems[0].Click();
         }
-
-        public int GetAddressesCount() => _wait.Until((d) => d.FindElements(By.ClassName("address"))).Count;
+        #endregion
     }
 }
