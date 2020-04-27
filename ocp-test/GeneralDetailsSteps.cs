@@ -16,15 +16,28 @@ namespace ocp_test
             _output = output;
         }
 
-        [Given(@"I on the General Details Tab")]
-        public void GivenIOnTheGeneralDetailsTab()
+        [Given(@"I on the (.*) Tab")]
+        public void GivenIOnTheGeneralDetailsTab(string tabName)
         {
             _output.WriteLine("Hola");
 
             _context.CorporateRegistryServicesPage = CorporateRegistryServicesPage.NavigateTo(_context.Driver);
-            _context.CorporateRegistryServicesPage.ClickNextButton();
 
-            _context.CorporateRegistryServicesPage.initializeGeneralDetailsElements();
+            switch (tabName)
+            {
+                case "General Details":
+                    _context.CorporateRegistryServicesPage.ClickNextButton();
+                    _context.CorporateRegistryServicesPage.InitializeGeneralDetailsElements();
+                    break;
+                case "Address":
+                    _context.CorporateRegistryServicesPage.ClickNextButton();
+                    Utility.Pause(300);
+                    _context.CorporateRegistryServicesPage.ClickNextButton();
+                    _context.CorporateRegistryServicesPage.InitializeAddressElements();
+                    break;
+                default:
+                    break;
+            }
 
             Utility.DemoPause();
         }
@@ -50,6 +63,8 @@ namespace ocp_test
                     _context.CorporateRegistryServicesPage.SetLetter(text);
                     Utility.DemoPause();
                     break;
+                case "address1":
+                    _context.CorporateRegistryServicesPage.SetAddress1(text);
                     Utility.DemoPause();
                     break;
                 default:
@@ -84,6 +99,12 @@ namespace ocp_test
             Utility.DemoPause();
             Assert.Equal(visibility, _context.CorporateRegistryServicesPage.IsUploadConsentsVisible());
         }
+
+        [Then(@"I should see new address is added")]
+        public void ThenIShouldSeeNewAddressIsAdded()
+        {
+            Utility.DemoPause();
+            Assert.Equal(1, _context.CorporateRegistryServicesPage.GetAddressesCount());
         }
 
     }
